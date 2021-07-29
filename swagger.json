@@ -1,0 +1,178 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "1.0.0",
+    "title": "Wisecaller APIs"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Authentication Service"
+    }
+  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/api/v1/auth/register": {
+      "post": {
+        "tags": ["Authentication Service"]
+      },
+      "parameters": [
+        {
+          "in": "body",
+          "description": "New user",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": ["mobileNo"],
+            "properties": {
+              "mobileNo": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "produces": ["application/json"],
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "422": {
+          "description": "Validation Failed"
+        },
+        "500": {
+          "description": "Bad Request"
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "tags": ["Authentication Service"]
+      },
+      "parameters": [
+        {
+          "in": "body",
+          "description": "Login User",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": ["mobileNo"],
+            "properties": {
+              "mobileNo": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "produces": ["application/json"],
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "422": {
+          "description": "Validation Failed"
+        },
+        "500": {
+          "description": "Bad Request"
+        }
+      }
+    },
+    "/api/v1/auth/verify-otp": {
+      "post": {
+        "tags": ["Authentication Service"]
+      },
+      "parameters": [
+        {
+          "in": "body",
+          "description": "Verify OTP",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": ["otp"],
+            "properties": {
+              "otp": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "produces": ["application/json"],
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "422": {
+          "description": "Validation Error"
+        },
+        "500": {
+          "description": "Bad Request"
+        }
+      }
+    },
+    "/api/v1/user/update-profile": {
+      "put": {
+        "tags": ["User"]
+      },
+      "parameters": [
+        {
+          "in": "body",
+          "description": "Update Profile",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstName": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "string"
+              },
+              "mobileNo": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "produces": ["application/json"],
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "422": {
+          "description": "Validation Error"
+        },
+        "500": {
+          "description": "Bad Request"
+        }
+      }
+    },
+    "/api/v1/user/get-profile": {
+      "get": {
+        "tags": ["User"]
+      },
+      "produces": ["application/json"],
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "422": {
+          "description": "Validation Error"
+        },
+        "500": {
+          "description": "Bad Request"
+        }
+      }
+    }
+  }
+}
